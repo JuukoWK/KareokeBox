@@ -8,8 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <!--Font (krungthep)-->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!--Font (krungthep not available)-->
+    
 
     <title>Karaoke Box</title>
     <!--Grid/Flex-->
@@ -31,6 +31,8 @@
       .lyrics-column {
         flex: 40%;
         padding: 20px;
+        overflow: scroll;
+        height: 70vh;
       }
       
       /*audio */
@@ -41,7 +43,7 @@
 
       /* On screens that are 992px wide or less, go from four columns to two columns */
       @media screen and (max-width: 992px) {
-        .column {
+        .video-column .lyrics-column .audio-row {
           flex: 50%;
         }
       }
@@ -57,10 +59,12 @@
   </head>
   <body>
 
+
+
 <!--Search Bar-->
     <header>
       <a href="#">
-        <img src="kbox3.png" alt="Karaoke Box" class="logo1" />
+        <img src="/img/log.png" alt="Karaoke Box" class="karaoke-box-logo" />
       </a>
       <form class="search-bar">
         <input class="search-input" type="search" placeholder="Search" aria-label="Search" />
