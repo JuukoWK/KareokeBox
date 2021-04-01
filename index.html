@@ -59,8 +59,6 @@
   </head>
   <body>
 
-
-
 <!--Search Bar-->
     <header>
       <a href="#">
@@ -69,17 +67,27 @@
       <form class="search-bar">
         <input class="search-input" type="search" placeholder="Search" aria-label="Search" />
         <button type="submit" class="search-btn">
-          <img src="search1.png" />
+          <img src="magnify.svg" />
         </button>
       </form>
     </header>
 
 <!--Video Section-->
 <div class="row">
-      <div class="video-column" >
+  <div class="video-column" >
         <h2>Video</h2>
-        <iframe width="653" height="380" src="https://www.youtube.com/embed/hW7iHYBLbxg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+        <video autoplay="true" id="videoElement" controls playsinline></video>
+<!--Audio--> 
+
+      <div class="audio-row">
+        <h2>Audio</h2>
+        <audio controls currentTime>
+        <source src="horse.ogg" type="audio/ogg">
+        <source src="horse.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+        </audio>
+      </div>      
+  </div>
 
 <!--Lyrics--> 
     <div class="lyrics-column">
@@ -87,16 +95,7 @@
         <p>Some text..</p>
     </div>
 
-<!--Audio--> 
 
-    <div class="audio-row">
-      <h2>Audio</h2>
-      <audio controls currentTime>
-        <source src="horse.ogg" type="audio/ogg">
-        <source src="horse.mp3" type="audio/mpeg">
-      Your browser does not support the audio element.
-      </audio>
-    </div>
 </div>  
 
   </body>
