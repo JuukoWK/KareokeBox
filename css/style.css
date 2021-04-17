@@ -32,6 +32,7 @@
     font-size: inherit;
     padding: .4em;
     border: 1px solid #ad325f;
+    border-right: 0px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
   }
@@ -53,9 +54,61 @@
     background-color: #ad325f;
   }
   
+  .result{
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+    display: block;
+
+}
+.song-list{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    transform: translate(-09% ,0)
+
+}
+
+.song-list li{
+    margin-bottom: 20px;
+    justify-content: space-evenly;
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 18px;
+    text-decoration: overline;
+    text-decoration-color: rgb(12, 147, 100);
+    position: relative;
+    
+}
+
+.song-list li::after{
+    content: "";
+    bottom: -4px;
+    height: 3px;
+    background: rgb(12, 147, 100);
+    display: inline-block;
+}
+.song-list li div{
+    float: left;
+}
+
+.song-list li span{
+    float: right;
+    background-color: #9E2092;
+    border: 0;
+    font-size: 12px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 400;
+    padding: 4px 10px;
+    text-transform: capitalize;
+}
+  
   video {
     margin: 5% auto;
     width: 100%;
-    background: rgba(0,0,0,0.2);
+    background: #d9effc;
   }
   
