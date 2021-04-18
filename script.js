@@ -1,11 +1,13 @@
+///  Variable Declaration ///
+
 const form = document.getElementById('form')
 const search = document.getElementById('search')
 const result = document.getElementById('result')
+const audio = document.getElementById('audioElement')
 
 
 /// api URL ///
 const apiURL = 'https://api.lyrics.ovh';
-
 
 /// adding event listener in form
 
@@ -13,25 +15,25 @@ form.addEventListener('submit', e=> {
     e.preventDefault();
     searchValue = search.value.trim()
 
-    if(!searchValue){
+
+    // Check if Search is empty//
+    if(!searchValue)
         alert("There is nothing to search")
-    }
-    else{ 
+    else
         searchSong(searchValue)
-    }
+    
 })
 
 
-//search song 
+//function to search song //
 async function searchSong(searchValue){
+
     const searchResult = await fetch(`${apiURL}/suggest/${searchValue}`)
     const data = await searchResult.json();
-
-    // console.log(finaldata)
     showData(data)
 }
 
-//display final result in DO
+//display final result in DOM - takes results from api and makes them readable//
 function showData(data){
   
     result.innerHTML = `
@@ -41,7 +43,7 @@ function showData(data){
                     <div>
                         <strong>${song.artist.name}</strong> -${song.title} 
                     </div>
-                    <span data-artist="${song.artist.name}" data-songtitle="${song.title}"> Play </span>
+                    <span data-artist="${song.artist.name}" data-songtitle="${song.title}" data-audiofile="${song.preview}"> Play </span>
                 </li>`
         )
         .join('')}
@@ -58,25 +60,36 @@ result.addEventListener('click', e=>{
     if (clickedElement.tagName === 'SPAN'){
         const artist = clickedElement.getAttribute('data-artist');
         const songTitle = clickedElement.getAttribute('data-songtitle');
+        const audioFile = clickedElement.getAttribute('data-audiofile');
         
-        getLyrics(artist, songTitle)
+        getLyrics(artist, songTitle ,audioFile)
+        
     }
 })
 
 // Get lyrics for song
-async function getLyrics(artist, songTitle) {
-    const res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
-    const data = await res.json();
-  
-    const lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
-  
-    result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
-    <p>${lyrics}</p>`;
-  
-  }
+async function getLyrics(artist, songTitle ,audioFile) {
+   
+    let res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
+    if(res.status === 200){
+        var data = await res.json();
 
+// Regular expressions replaced with break at end of line//
 
-// load video player
+        var lyrics = data.lyrics.replace(/(\r\n|\r|\n)/g, '<br>');
+
+        result.innerHTML = `<h2><strong>${artist}</strong> - ${songTitle}</h2>
+    
+        <p>${lyrics}</p>`;
+        
+        // Create Audio player with audio file(link) from api//
+        audio.innerHTML  = `<audio controls currentTime>< <source src="${audioFile}" /></audio>`;
+    }else
+        audio.innerHTML = `<p>No lyrics</p>`;
+}
+    
+
+// load video player - consideration for further design, make it a video call function//
 var video = document.querySelector("#videoElement");
     const constraints = {
       video: {
@@ -99,7 +112,7 @@ var video = document.querySelector("#videoElement");
           video.srcObject = stream;
         })
         .catch(function (err0r) {
-          console.log("Something went wrong!");
+          
         });
     }
     

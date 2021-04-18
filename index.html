@@ -63,7 +63,7 @@
         <img src="logo.png" alt="Karaoke Box" class="karaoke-box-logo" />
       </a>
       <form class="search-bar" id="form"  autocomplete="off">
-        <input class="search-input" type="search"  id="search"  placeholder="Enter artist name or song title..."/>
+        <input class="search-input" type="search"  id="search" placeholder="Enter artist name or song title..."/>
         <button type="submit" class="search-btn">
           <img src="magnify.svg" />
         </button>
@@ -76,19 +76,18 @@
         <h2>Video</h2>
         <video autoplay="true" id="videoElement" controls playsinline></video>
 <!--Audio(within video section)--> 
-      <div class="audio-row">
-        <h2>Audio</h2>
-        <audio controls currentTime>
-        <source src="horse.ogg" type="audio/ogg">
-        <source src="horse.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-        </audio>
-      </div>      
+    <div>
+      <br>
+        <h2>Player</h2>
+        <section id="audioElement"></section>
+    </div>    
   </div>
 
 <!--Lyrics--> 
 <div class="lyrics-column">
-  <section class="result" id="result"></section>
+  <section class="result" id="result">
+    
+  </section>
 </div>
 
     <script src="script.js"></script>
